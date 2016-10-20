@@ -18,6 +18,8 @@ Custom property | Description | Default
 `--etools-loading-bg-color` | Background color | `#ffffff`
 `--etools-loading-border-color` | Border color | `#dedede`
 `--etools-loading-shadow-color` | Shadow color | `#333333`
+`--etools-loading-container` | Loading container style | `{}`
+`--etools-loading-message` | Loading container style | `{}`
 
 To change spinner colors use paper-spinner styling variables([paper-spinner docs](https://elements.polymer-project.org/elements/paper-spinner))
 

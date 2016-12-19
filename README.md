@@ -3,8 +3,15 @@
 Loading spinner.
 
 You can use this loading element:
-- with an overlay: the loading spinner, message and overlay will be shown over your content area;
-- simple, no overlay: the loading spinner and the message will be displayed inline-block.
+- with an overlay: 
+    - default state has the loading spinner, message and overlay will be shown over your content area; 
+    make sure your content area has position relative.
+    
+    - absolute position: the loading will cover entire screen. If you use Polymer Starter Kit, 
+    use `etoolsBehaviors.LoadingBehavior` to create the loading element when your custom element is stamped (`createLoading`);
+    make sure you remove the loading element in your element detached state using `emoveLoading(loadingElement)`.
+    
+- simple, no overlay, inline block: the loading spinner and the message will be displayed inline-block.
 
 ## Styling
 
@@ -25,16 +32,45 @@ To change spinner colors use paper-spinner styling variables([paper-spinner docs
 
 
 ## Usage
+
+### Default. The loading it's placed inside a container:
 ```html
 <etools-loading active>Loading text here...</etools-loading>
-
-<etools-loading active overlay="no-overlay">Loading text here...</etools-loading>
 ```
+![Loading inside a container](etools-loading-contained.png)
+
+### Inline block loading:
+```html
+<etools-loading no-overlay active>Loading text here...</etools-loading>
+```
+![Loading inside a container](etools-loading-inline-block-position.png)
+
+
+### Absolute position with Polymer Starter Kit:
+
+```javascript
+// inside your custom element
+behaviors: [etoolsBehaviors.LoadingBehavior],
+
+ready: function () {
+  this.loadingEl = this.createLoading("This is a loading that will cover entire screen!");
+},
+
+detached: function() {
+  this.removeLoading(this.loadingEl);
+}
+```
+You will have a loading element appended to the body.
+```html
+<etools-loading absolute active>Loading text here...</etools-loading>
+```
+![Loading inside a container](etools-loading-absolute-position.png)
 
 Available attributes:
 * active: Boolean, default: false
 * loadingText: String, default: 'Loading data'
-* overlay: String, default: 'overlay'
+* noOverlay: Boolean, default: 'false'
+* absolute: Boolean, default: 'false'
 
 ## Install
 ```bash

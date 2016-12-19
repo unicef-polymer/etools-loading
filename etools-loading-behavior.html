@@ -1,0 +1,33 @@
+<link rel="import" href="etools-loading.html">
+<script>
+  window.etoolsBehaviors = window.etoolsBehaviors || {};
+  etoolsBehaviors.LoadingBehavior = {
+
+    /**
+     * This method will create an etools-loading absolute element
+     * (loading element is appended to the body and it will cover entire screen)
+     * @param loadingMessage
+     * @returns {Element}
+     */
+    createLoading: function(loadingMessage) {
+      var newLoadingElement = document.createElement('etools-loading');
+      if (typeof loadingMessage === 'string' && loadingMessage !== '') {
+        newLoadingElement.loadingText = loadingMessage;
+      }
+      newLoadingElement.absolute = true;
+      Polymer.dom(document.querySelector('body')).appendChild(newLoadingElement);
+      return newLoadingElement;
+    },
+
+    /**
+     * Use this method to remove a loading element in the detached state of the element where loading is used
+     * @param loadingElement
+     */
+    removeLoading: function(loadingElement) {
+      if (loadingElement) {
+        Polymer.dom(document.querySelector('body')).removeChild(loadingElement);
+      }
+    }
+
+  }
+</script>

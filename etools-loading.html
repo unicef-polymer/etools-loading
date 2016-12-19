@@ -36,19 +36,18 @@ To change spinner colors use paper-spinner styling variables([paper-spinner docs
   <template>
     <style include="iron-flex iron-flex-alignment">
       :host {
-        position: absolute;
-        top: 0;
         @apply(--layout-horizontal);
         @apply(--layout-center-justified);
-        width: 100%;
-        height: 100%;
+        @apply(--layout-fit);
         background-color: rgba(180, 180, 180, var(--etools-loading-overlay-transparency, 0.6));
         z-index: 50;
         text-align: center;
       }
 
-      :host([overlay="no-overlay"]) {
+      :host([no-overlay]) {
+        background-color: transparent;
         display: inline-block !important;
+        position: static;
         width: auto;
       }
       .loading-message {
@@ -60,13 +59,17 @@ To change spinner colors use paper-spinner styling variables([paper-spinner docs
         width: var(--etools-loading-spinner-size, 20px);
         height: var(--etools-loading-spinner-size, 20px);
       }
-      :host([overlay="overlay"]) .loading-content {
+      :host(:not([no-overlay])) .loading-content {
         background: var(--etools-loading-bg-color, #ffffff);
         border: 1px solid var(--etools-loading-border-color, #dedede);
         box-shadow: 0px 2px 5px -2px var(--etools-loading-shadow-color, #333333);
         padding: 10px;
         border-radius: 4px;
         @apply(--etools-loading-container)
+      }
+
+      :host([absolute]) {
+        position: fixed;
       }
 
       :host(:not([active])) {
@@ -97,9 +100,14 @@ To change spinner colors use paper-spinner styling variables([paper-spinner docs
             type: String,
             value: 'Loading data'
           },
-          overlay: {
-            type: String,
-            value: 'overlay',
+          noOverlay: {
+            type: Boolean,
+            value: false,
+            reflectToAttribute: true
+          },
+          absolute: {
+            type: Boolean,
+            value: false,
             reflectToAttribute: true
           }
         }

@@ -9,7 +9,7 @@ You can use this loading element:
     
     - absolute position: the loading will cover entire screen. If you use Polymer Starter Kit, 
     use `etoolsBehaviors.LoadingBehavior` to create the loading element when your custom element is stamped (`createLoading`);
-    make sure you remove the loading element in your element detached state using `emoveLoading(loadingElement)`.
+    make sure you remove the loading element in your element detached state using `removeLoading(loadingElement)`.
     
 - simple, no overlay, inline block: the loading spinner and the message will be displayed inline-block.
 

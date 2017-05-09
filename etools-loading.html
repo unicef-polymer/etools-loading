@@ -70,17 +70,14 @@ To change spinner colors use paper-spinner styling variables([paper-spinner docs
 
       :host([absolute]) {
         position: fixed;
-      }
-
-      :host(:not([active])) {
-        display: none;
+        z-index: 1000000;
       }
 
     </style>
     <div class="layout horizontal self-center">
       <div class="layout horizontal self-center loading-content">
-        <paper-spinner active="[[active]]" alt="[[loadingText]]"></paper-spinner>
-        <span class="loading-message self-center">{{loadingText}}</span>
+        <paper-spinner active></paper-spinner>
+        <span class="loading-message self-center">[[loadingText]]</span>
       </div>
     </div>
   </template>
@@ -94,21 +91,19 @@ To change spinner colors use paper-spinner styling variables([paper-spinner docs
           active: {
             type: Boolean,
             value: false,
-            reflectToAttribute: true
+            reflectToAttribute: true,
+            observer: '_loadingStateChanged'
           },
           loadingText: {
             type: String,
             value: 'Loading data'
-          },
-          noOverlay: {
-            type: Boolean,
-            value: false,
-            reflectToAttribute: true
-          },
-          absolute: {
-            type: Boolean,
-            value: false,
-            reflectToAttribute: true
+          }
+        },
+        _loadingStateChanged: function(active) {
+          if (active) {
+            this.style.display = 'flex';
+          } else {
+            this.style.display = 'none';
           }
         }
       });

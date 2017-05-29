@@ -3,14 +3,14 @@
 Loading spinner.
 
 You can use this loading element:
-- with an overlay: 
-    - default state has the loading spinner, message and overlay will be shown over your content area; 
+- with an overlay:
+    - default state has the loading spinner, message and overlay will be shown over your content area;
     make sure your content area has position relative.
-    
-    - absolute position: the loading will cover entire screen. If you use Polymer Starter Kit, 
+
+    - absolute position: the loading will cover entire screen. If you use Polymer Starter Kit,
     use `etoolsBehaviors.LoadingBehavior` to create the loading element when your custom element is stamped (`createLoading`);
     make sure you remove the loading element in your element detached state using `removeLoading(loadingElement)`.
-    
+
 - simple, no overlay, inline block: the loading spinner and the message will be displayed inline-block.
 
 ## Styling
@@ -77,9 +77,34 @@ Available attributes:
 $ bower install --save etools-loading
 ```
 
+## Linting the code
+
+Innstall local npm packages (run `npm install`)
+Then just run the linting task
+
+```bash
+$ npm run lint
+```
+
 ## Preview element locally
 Install needed dependencies by running: `$ bower install`.
 Make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `$ polymer serve` to serve your element application locally.
+
+## Linting the code
+
+Innstall local npm packages (run `npm install`)
+Then just run the linting task
+
+```bash
+$ npm run lint
+```
+You should also use polylint. If you don't have Polylint installed run `npm install -g polylint`.
+Then just run the linter on each file you wish to check like so
+
+```bash
+$ polylint -i filename.html
+```
+At the moment polylint crashes if it encounters a missing import. If that happens, temporarily comment out such imports and run the command again.
 
 ## Running Tests
 

@@ -77,22 +77,13 @@ Available attributes:
 $ bower install --save etools-loading
 ```
 
-## Linting the code
-
-Innstall local npm packages (run `npm install`)
-Then just run the linting task
-
-```bash
-$ npm run lint
-```
-
 ## Preview element locally
 Install needed dependencies by running: `$ bower install`.
 Make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `$ polymer serve` to serve your element application locally.
 
 ## Linting the code
 
-Innstall local npm packages (run `npm install`)
+Install local npm packages (run `npm install`)
 Then just run the linting task
 
 ```bash

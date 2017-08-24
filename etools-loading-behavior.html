@@ -55,13 +55,15 @@
     /**
      * Show loading when data is requested from server, or save is in progress...
      */
-    handleLoading: function (event) {
+    handleLoading: function(event) {
       event.stopImmediatePropagation();
       if (this.globalLoadingElement) {
-        var loadingSource = _.get(event, 'path.0.localName','na');
+        var loadingSource = event.detail.loadingSource
+            ? event.detail.loadingSource
+            : _.get(event, 'path.0.localName', 'na');
         if (event.detail.active) {
           var message = _.get(event, 'detail.message', 'Loading...');
-          this.globalLoadingElement.messages = this.addMessageToQue(this.globalLoadingElement.messages,{
+          this.globalLoadingElement.messages = this.addMessageToQue(this.globalLoadingElement.messages, {
             loadingSource: loadingSource,
             message: message
           });
@@ -71,9 +73,9 @@
           this.globalLoadingElement.messages = this.removeMessageFromQue(this.globalLoadingElement.messages, {
             loadingSource: loadingSource
           });
-          if (_.isEmpty(this.globalLoadingElement.messages)){
+          if (_.isEmpty(this.globalLoadingElement.messages)) {
             this.globalLoadingElement.active = false;
-          }else {
+          } else {
             this.globalLoadingElement.loadingText = _.last(this.globalLoadingElement.messages).message;
           }
         }

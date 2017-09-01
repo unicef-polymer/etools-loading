@@ -29,7 +29,7 @@ Custom property | Description | Default
 To change spinner colors use paper-spinner styling variables([paper-spinner docs](https://elements.polymer-project.org/elements/paper-spinner))
 
 
-@demo demo/index.html 
+@demo demo/index.html
 -->
 
 <dom-module id="etools-loading">
@@ -50,15 +50,18 @@ To change spinner colors use paper-spinner styling variables([paper-spinner docs
         position: static;
         width: auto;
       }
+
       .loading-message {
         margin-left: 15px;
         color: var(--etools-loading-msg-color, #333333);
         @apply(--etools-loading-message)
       }
+
       paper-spinner {
         width: var(--etools-loading-spinner-size, 20px);
         height: var(--etools-loading-spinner-size, 20px);
       }
+
       :host(:not([no-overlay])) .loading-content {
         background: var(--etools-loading-bg-color, #ffffff);
         border: 1px solid var(--etools-loading-border-color, #dedede);
@@ -83,7 +86,7 @@ To change spinner colors use paper-spinner styling variables([paper-spinner docs
   </template>
 
   <script>
-    (function () {
+    (function() {
       'use strict';
       Polymer({
         is: 'etools-loading',

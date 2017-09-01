@@ -1,7 +1,7 @@
 {
   "name": "etools-loading",
   "description": "loading spinner",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "license": "https://github.com/unicef-polymer/etools-loading/blob/master/LICENSE.md",
   "main": "etools-loading.html",
   "dependencies": {

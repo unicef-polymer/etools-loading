@@ -50,15 +50,18 @@ To change spinner colors use paper-spinner styling variables([paper-spinner docs
         position: static;
         width: auto;
       }
+
       .loading-message {
         margin-left: 15px;
         color: var(--etools-loading-msg-color, #333333);
         @apply(--etools-loading-message)
       }
+
       paper-spinner {
         width: var(--etools-loading-spinner-size, 20px);
         height: var(--etools-loading-spinner-size, 20px);
       }
+
       :host(:not([no-overlay])) .loading-content {
         background: var(--etools-loading-bg-color, #ffffff);
         border: 1px solid var(--etools-loading-border-color, #dedede);

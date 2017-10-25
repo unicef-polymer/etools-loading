@@ -20,12 +20,18 @@
 
     <script>
       suite('etools-loading', function() {
-
-        test('instantiating the element works', function() {
-          var element = fixture('basic');
-          assert.equal(element.is, 'etools-loading');
+        let basic;
+        setup(() => {
+          basic = fixture('basic');
         });
-
+        test('instantiating the element works', () => {
+          assert.equal(basic.is, 'etools-loading');
+        });
+        test('displays when instantiated with active property', () => {
+          basic.setAttribute('active', true)
+          expect(basic.style.display).to.equal('flex')
+          expect(basic.style.display).to.not.equal('none')
+        })
       });
     </script>
   </body>

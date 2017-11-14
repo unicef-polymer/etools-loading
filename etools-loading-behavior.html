@@ -7,6 +7,7 @@
   etoolsBehaviors.LoadingBehavior = { // eslint-disable-line no-undef
     listeners: {
       'global-loading': 'handleLoading',
+      'clear-loading-messages': 'clearLoadingQueue',
     },
     ready: function() {
       // create loading element, used for global loading
@@ -81,6 +82,11 @@
         }
 
       }
+    },
+    clearLoadingQueue: function(event) {
+      event.stopImmediatePropagation();
+      this.globalLoadingElement.messages = [];
+      this.globalLoadingElement.active = false;
     }
 
 

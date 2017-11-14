@@ -86,6 +86,7 @@
     clearLoadingQueue: function(event) {
       event.stopImmediatePropagation();
       this.globalLoadingElement.messages = [];
+      this.globalLoadingElement.active = false;
     }
 
 

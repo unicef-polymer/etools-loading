@@ -7,9 +7,10 @@ You can use this loading element:
     - default state has the loading spinner, message and overlay will be shown over your content area;
     make sure your content area has position relative.
 
-    - absolute position: the loading will cover entire screen. If you use Polymer Starter Kit,
+    - absolute position: the loading will cover entire screen. If you use Polymer Starter Kit, for version up until and including 2.0.0,
     use `etoolsBehaviors.LoadingBehavior` to create the loading element when your custom element is stamped (`createLoading`);
     make sure you remove the loading element in your element detached state using `removeLoading(loadingElement)`.
+    Starting with version 3.0.0 use `etoolsMixins.LoadingMixin` as a mixin.
 
 - simple, no overlay, inline block: the loading spinner and the message will be displayed inline-block.
 
@@ -37,20 +38,22 @@ To change spinner colors use paper-spinner styling variables([paper-spinner docs
 ```html
 <etools-loading active>Loading text here...</etools-loading>
 ```
-![Loading inside a container](etools-loading-contained.png)
+![Loading inside a container](img/etools-loading-contained.png)
 
 ### Inline block loading:
 ```html
 <etools-loading no-overlay active>Loading text here...</etools-loading>
 ```
-![Loading inside a container](etools-loading-inline-block-position.png)
+![Loading inside a container](img/etools-loading-inline-block-position.png)
 
 
 ### Absolute position with Polymer Starter Kit:
 
 ```javascript
-// inside your custom element
+// inside your custom element up until and including version 2.0.0
 behaviors: [etoolsBehaviors.LoadingBehavior],
+
+//Starting with version 3.0.0 use as a mixin
 
 ready: function () {
   this.loadingEl = this.createLoading("This is a loading that will cover entire screen!");
@@ -64,7 +67,7 @@ You will have a loading element appended to the body.
 ```html
 <etools-loading absolute active>Loading text here...</etools-loading>
 ```
-![Loading inside a container](etools-loading-absolute-position.png)
+![Loading inside a container](img/etools-loading-absolute-position.png)
 
 Available attributes:
 * active: Boolean, default: false

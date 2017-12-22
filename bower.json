@@ -5,16 +5,16 @@
   "license": "https://github.com/unicef-polymer/etools-loading/blob/master/LICENSE.md",
   "main": "etools-loading.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.4.0",
-    "paper-spinner": "PolymerElements/paper-spinner#^1.2.0",
-    "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.3.1",
-    "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.4.1"
+    "polymer": "Polymer/polymer#^2.0.0",
+    "paper-spinner": "PolymerElements/paper-spinner#^2.0.0",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.0",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#^2.0.0"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
-    "web-component-tester": "^4.0.0",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
+    "iron-component-page": "PolymerElements/iron-component-page#^3.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+    "web-component-tester": "^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
     "lodash": "^4.17.4"
   },
   "resolutions": {

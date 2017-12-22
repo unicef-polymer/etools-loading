@@ -50,10 +50,9 @@ To change spinner colors use paper-spinner styling variables([paper-spinner docs
 ### Absolute position with Polymer Starter Kit:
 
 ```javascript
-// inside your custom element up until and including version 2.0.0
+// Inside your custom element up until and including version 2.0.0
+// Starting with version 3.0.0 use as a mixin
 behaviors: [etoolsBehaviors.LoadingBehavior],
-
-//Starting with version 3.0.0 use as a mixin
 
 ready: function () {
   this.loadingEl = this.createLoading("This is a loading that will cover entire screen!");

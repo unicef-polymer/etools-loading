@@ -1,14 +1,16 @@
 <link rel="import" href="etools-loading.html">
 <link rel="import" href="scripts/lodash.html">
 <script>
-  window.etoolsMixins = window.etoolsMixins || {};
+  'use strict';
+
+  window.EtoolsMixins = window.EtoolsMixins || {};
   /*
   * @polymer
   * @mixinFunction
   */
-  etoolsMixins.LoadingMixin = (baseClass) => class extends baseClass {
-    ready() {
-      super.ready();
+  EtoolsMixins.LoadingMixin = Polymer.dedupingMixin((baseClass) => class extends baseClass {
+    connectedCallback() {
+      super.connectedCallback();
       this.addEventListener('global-loading', this.handleLoading);
       this.addEventListener('clear-loading-messages', this.clearLoadingQueue);
 
@@ -24,7 +26,7 @@
      * @returns {Element}
      */
     createLoading(loadingMessage) {
-      var newLoadingElement = document.createElement('etools-loading');
+      let newLoadingElement = document.createElement('etools-loading');
       if (typeof loadingMessage === 'string' && loadingMessage !== '') {
         newLoadingElement.loadingText = loadingMessage;
       }
@@ -44,13 +46,13 @@
     }
 
     addMessageToQue(messages, source) {
-      var _messages = _.slice(messages);
+      let _messages = _.slice(messages);
       _messages.push(source);
       return _messages;
     }
 
     removeMessageFromQue(messages, source) {
-      var _messages = _.slice(messages);
+      let _messages = _.slice(messages);
       _.remove(_messages, {loadingSource: source.loadingSource});
       return _messages;
     }
@@ -61,11 +63,11 @@
     handleLoading(event) {
       event.stopImmediatePropagation();
       if (this.globalLoadingElement) {
-        var loadingSource = event.detail.loadingSource
+        let loadingSource = event.detail.loadingSource
             ? event.detail.loadingSource
             : _.get(event, 'path.0.localName', 'na');
         if (event.detail.active) {
-          var message = _.get(event, 'detail.message', 'Loading...');
+          let message = _.get(event, 'detail.message', 'Loading...');
           this.globalLoadingElement.messages = this.addMessageToQue(this.globalLoadingElement.messages, {
             loadingSource: loadingSource,
             message: message
@@ -92,6 +94,5 @@
       this.globalLoadingElement.active = false;
     }
 
-
-  };
+  });
 </script>

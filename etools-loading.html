@@ -86,35 +86,41 @@ To change spinner colors use paper-spinner styling variables([paper-spinner docs
   </template>
 
   <script>
-      'use strict';
-      class EtoolsLoading extends Polymer.Element {
-        static get is() {
-          return 'etools-loading';
-        }
-        static get properties() {
-          return {
-            active: {
-              type: Boolean,
-              value: false,
-              reflectToAttribute: true,
-              observer: '_loadingStateChanged'
-            },
-            loadingText: {
-              type: String,
-              value: 'Loading data'
-            }
-          };
-        }
+    'use strict';
 
-        _loadingStateChanged(active) {
-          if (active) {
-            this.style.display = 'flex';
-          } else {
-            this.style.display = 'none';
-          }
-        }
+    /**
+     * @polymer
+     * @customElement
+     */
+    class EtoolsLoading extends Polymer.Element {
+      static get is() {
+        return 'etools-loading';
       }
 
-      customElements.define(EtoolsLoading.is, EtoolsLoading);
+      static get properties() {
+        return {
+          active: {
+            type: Boolean,
+            value: false,
+            reflectToAttribute: true,
+            observer: '_loadingStateChanged'
+          },
+          loadingText: {
+            type: String,
+            value: 'Loading data'
+          }
+        };
+      }
+
+      _loadingStateChanged(active) {
+        if (active) {
+          this.style.display = 'flex';
+        } else {
+          this.style.display = 'none';
+        }
+      }
+    }
+
+    customElements.define(EtoolsLoading.is, EtoolsLoading);
   </script>
 </dom-module>

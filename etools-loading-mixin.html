@@ -8,7 +8,7 @@
   * @polymer
   * @mixinFunction
   */
-  EtoolsMixins.LoadingMixin = Polymer.dedupingMixin((baseClass) => class extends baseClass {
+  EtoolsMixins.LoadingMixin = Polymer.dedupingMixin(baseClass => class extends baseClass {
     connectedCallback() {
       super.connectedCallback();
       this.addEventListener('global-loading', this.handleLoading);

@@ -1,5 +1,5 @@
 import 'etools-loading.js';
-import * as _ from './lodash.js';
+import _ from './lodash.js';
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 
 
@@ -7,7 +7,7 @@ import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
   * @polymer
   * @mixinFunction
   */
-  const LoadingMixin = dedupingMixin(baseClass => class extends baseClass {
+  const internalLoadingMixin = baseClass => class extends baseClass {
     connectedCallback() {
       super.connectedCallback();
       this.addEventListener('global-loading', this.handleLoading);
@@ -61,29 +61,31 @@ import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
      */
     handleLoading(event) {
       event.stopImmediatePropagation();
-      if (this.globalLoadingElement) {
-        let loadingSource = event.detail.loadingSource
-            ? event.detail.loadingSource
-            : _.get(event, 'path.0.localName', 'na');
-        if (event.detail.active) {
-          let message = _.get(event, 'detail.message', 'Loading...');
-          this.globalLoadingElement.messages = this.addMessageToQue(this.globalLoadingElement.messages, {
-            loadingSource: loadingSource,
-            message: message
-          });
-          this.globalLoadingElement.loadingText = _.last(this.globalLoadingElement.messages).message;
-          this.globalLoadingElement.active = true;
-        } else {
-          this.globalLoadingElement.messages = this.removeMessageFromQue(this.globalLoadingElement.messages, {
-            loadingSource: loadingSource
-          });
-          if (_.isEmpty(this.globalLoadingElement.messages)) {
-            this.globalLoadingElement.active = false;
-          } else {
-            this.globalLoadingElement.loadingText = _.last(this.globalLoadingElement.messages).message;
-          }
-        }
+      if (!this.globalLoadingElement) {
+        return;
+      }
 
+      let loadingSource = event.detail.loadingSource
+          ? event.detail.loadingSource
+          : _.get(event, 'path.0.localName', 'na');
+
+      if (event.detail.active) {
+        let message = _.get(event, 'detail.message', 'Loading...');
+        this.globalLoadingElement.messages = this.addMessageToQue(this.globalLoadingElement.messages, {
+          loadingSource: loadingSource,
+          message: message
+        });
+        this.globalLoadingElement.loadingText = _.last(this.globalLoadingElement.messages).message;
+        this.globalLoadingElement.active = true;
+      } else {
+        this.globalLoadingElement.messages = this.removeMessageFromQue(this.globalLoadingElement.messages, {
+          loadingSource: loadingSource
+        });
+        if (_.isEmpty(this.globalLoadingElement.messages)) {
+          this.globalLoadingElement.active = false;
+        } else {
+          this.globalLoadingElement.loadingText = _.last(this.globalLoadingElement.messages).message;
+        }
       }
     }
 
@@ -92,5 +94,5 @@ import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
       this.globalLoadingElement.messages = [];
       this.globalLoadingElement.active = false;
     }
-
-  });
+  }
+  export default LoadingMixin = dedupingMixin(internalLoadingMixin);

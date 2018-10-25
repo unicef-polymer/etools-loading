@@ -1,6 +1,6 @@
 {
   "description": "loading spinner",
-  "name": "@polymer/etools-loading",
+  "name": "etools-loading",
   "version": "4.0.0",
   "devDependencies": {
     "eslint": "^3.19.0",

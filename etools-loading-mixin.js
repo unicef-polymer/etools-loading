@@ -6,7 +6,7 @@ import {dedupingMixin} from '@polymer/polymer/lib/utils/mixin.js';
 * @polymer
 * @mixinFunction
 */
-const internalLoadingMixin = baseClass => class extends baseClass {
+export const LoadingMixin = dedupingMixin(baseClass => class extends baseClass {
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('global-loading', this.handleLoading);
@@ -93,7 +93,4 @@ const internalLoadingMixin = baseClass => class extends baseClass {
     this.globalLoadingElement.messages = [];
     this.globalLoadingElement.active = false;
   }
-}
-
-window.EtoolsMixins = window.EtoolsMixins || {};
-EtoolsMixins.LoadingMixin = dedupingMixin(internalLoadingMixin);
+});

@@ -1,8 +1,6 @@
-import { PolymerElement } from '@polymer/polymer/polymer-element.js';
-
-import '@polymer/iron-flex-layout/iron-flex-layout-classes.js';
-import '@polymer/paper-spinner/paper-spinner.js';
-import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import {PolymerElement, html} from '@polymer/polymer/polymer-element';
+import '@polymer/iron-flex-layout/iron-flex-layout-classes';
+import '@polymer/paper-spinner/paper-spinner';
 
 /**
   `etools-loading`
@@ -29,10 +27,12 @@ import { html } from '@polymer/polymer/lib/utils/html-tag.js';
   `--etools-loading-message` | Loading container style | `{}`
 
 
-  To change spinner colors use paper-spinner styling variables([paper-spinner docs](https://elements.polymer-project.org/elements/paper-spinner))
+  To change spinner colors use paper-spinner styling variables([paper-spinner docs]
+    (https://elements.polymer-project.org/elements/paper-spinner))
 
  * @customElement
  * @polymer
+ * @extends
  * @demo demo/index.html
  */
 class EtoolsLoading extends PolymerElement {

@@ -94,4 +94,6 @@ const internalLoadingMixin = baseClass => class extends baseClass {
     this.globalLoadingElement.active = false;
   }
 }
-export default LoadingMixin = dedupingMixin(internalLoadingMixin);
+
+window.EtoolsMixins = window.EtoolsMixins || {};
+EtoolsMixins.LoadingMixin = dedupingMixin(internalLoadingMixin);

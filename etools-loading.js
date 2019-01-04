@@ -30,9 +30,7 @@ import '@polymer/paper-spinner/paper-spinner';
   To change spinner colors use paper-spinner styling variables([paper-spinner docs]
     (https://elements.polymer-project.org/elements/paper-spinner))
 
- * @customElement
- * @polymer
- * @extends
+ * @extends HTMLElement
  * @demo demo/index.html
  */
 class EtoolsLoading extends PolymerElement {
@@ -90,9 +88,6 @@ class EtoolsLoading extends PolymerElement {
       `;
     }
 
-    static get is() {
-      return 'etools-loading';
-    }
     static get properties() {
       return {
         active: {
@@ -117,4 +112,4 @@ class EtoolsLoading extends PolymerElement {
     }
   }
 
-  customElements.define(EtoolsLoading.is, EtoolsLoading);
+  customElements.define('etools-loading', EtoolsLoading);

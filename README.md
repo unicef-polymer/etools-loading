@@ -7,30 +7,10 @@ You can use this loading element:
     - default state has the loading spinner, message and overlay will be shown over your content area;
     make sure your content area has position relative.
 
-    - absolute position: the loading will cover entire screen. If you use Polymer Starter Kit, for version up until and including 2.0.0,
-    use `etoolsBehaviors.LoadingBehavior` to create the loading element when your custom element is stamped (`createLoading`);
+    - absolute position: the loading will cover entire screen. Use `LoadingMixin` to create the loading element when your custom element is stamped (`createLoading`);
     make sure you remove the loading element in your element detached state using `removeLoading(loadingElement)`.
-    Starting with version 3.0.0 use `etoolsMixins.LoadingMixin` as a mixin.
 
 - simple, no overlay, inline block: the loading spinner and the message will be displayed inline-block.
-
-## Styling
-
-You can use defined variables for styling.
-
-Custom property | Description | Default
-----------------|-------------|----------
-`--etools-loading-overlay-transparency` | Overlay transparency | `0.6`
-`--etools-loading-msg-color` | Loading message color | `#333333`
-`--etools-loading-spinner-size` | Spinner size (width & height) | `20px`
-`--etools-loading-bg-color` | Background color | `#ffffff`
-`--etools-loading-border-color` | Border color | `#dedede`
-`--etools-loading-shadow-color` | Shadow color | `#333333`
-`--etools-loading-container` | Loading container style | `{}`
-`--etools-loading-message` | Loading container style | `{}`
-
-To change spinner colors use paper-spinner styling variables([paper-spinner docs](https://elements.polymer-project.org/elements/paper-spinner))
-
 
 ## Usage
 
@@ -46,42 +26,24 @@ To change spinner colors use paper-spinner styling variables([paper-spinner docs
 ```
 ![Loading inside a container](img/etools-loading-inline-block-position.png)
 
-
-### Absolute position with Polymer Starter Kit:
-
-```javascript
-// Inside your custom element up until and including version 2.0.0
-// Starting with version 3.0.0 use as a mixin
-behaviors: [etoolsBehaviors.LoadingBehavior],
-
-ready: function () {
-  this.loadingEl = this.createLoading("This is a loading that will cover entire screen!");
-},
-
-detached: function() {
-  this.removeLoading(this.loadingEl);
-}
-```
-You will have a loading element appended to the body.
+### Absolute positioning
 ```html
 <etools-loading absolute active>Loading text here...</etools-loading>
 ```
 ![Loading inside a container](img/etools-loading-absolute-position.png)
 
-Available attributes:
-* active: Boolean, default: false
-* loadingText: String, default: 'Loading data'
-* noOverlay: Boolean, default: 'false'
-* absolute: Boolean, default: 'false'
-
 ## Install
+TODO: create npm package
 ```bash
-$ bower install --save etools-loading
+$ npm i --save unicef-polymer/etools-loading#branch_name
 ```
 
 ## Preview element locally
-Install needed dependencies by running: `$ bower install`.
+Install needed dependencies by running: `$ npm install`.
 Make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `$ polymer serve` to serve your element application locally.
+
+
+Update demo interface: `$ polymer analyze demo/index.html > analysis.json`
 
 ## Linting the code
 
@@ -93,7 +55,7 @@ $ npm run lint
 ```
 
 ## Running Tests
-
+TODO: improve and add more tests
 ```
 $ polymer test
 ```

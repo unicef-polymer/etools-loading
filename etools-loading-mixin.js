@@ -2,10 +2,10 @@ import './etools-loading.js';
 import 'lodash/lodash';
 import {dedupingMixin} from '@polymer/polymer/lib/utils/mixin.js';
 
-/*
-* @polymer
-* @mixinFunction
-*/
+/**
+ * @polymer
+ * @mixinFunction
+ */
 export const LoadingMixin = dedupingMixin(baseClass => class extends baseClass {
   connectedCallback() {
     super.connectedCallback();

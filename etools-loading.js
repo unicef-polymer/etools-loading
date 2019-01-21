@@ -34,7 +34,7 @@ import '@polymer/paper-spinner/paper-spinner';
  * @customElement
  * @demo demo/index.html
  */
-export class EtoolsLoading extends PolymerElement {
+class EtoolsLoading extends PolymerElement {
     static get template() {
       return html`
         <style include="iron-flex iron-flex-alignment">

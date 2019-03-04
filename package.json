@@ -8,17 +8,19 @@
     "eslint-plugin-html": "^2.0.0",
     "@polymer/iron-component-page": "^3.0.0-pre.18",
     "@polymer/iron-demo-helpers": "^3.0.0-pre.18",
+    "@polymer/gen-typescript-declarations": "^1.6.0",
     "wct-browser-legacy": "^0.0.1-pre.11",
     "@webcomponents/webcomponentsjs": "^2.0.0"
   },
   "scripts": {
     "lint": "npm run lint:javascript && polymer lint && exit 0",
-    "lint:javascript": "eslint . --ext js,html && exit 0"
+    "lint:javascript": "eslint . --ext js,html && exit 0",
+    "gen-typings": "gen-typescript-declarations"
   },
   "main": "etools-loading.js",
   "license": "https://github.com/unicef-polymer/etools-loading/blob/master/LICENSE.md",
   "dependencies": {
-    "lodash": "^4.17.10",
+    "lodash-es": "^4.17.11",
     "@polymer/polymer": "^3.0.0",
     "@polymer/paper-spinner": "^3.0.0-pre.18",
     "@polymer/iron-flex-layout": "^3.0.0-pre.18",

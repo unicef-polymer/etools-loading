@@ -1,5 +1,5 @@
 import 'etools-loading.js';
-import _ from './lodash.js';
+import _ from './node_modules/lodash-es/lodash.js';
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 
 

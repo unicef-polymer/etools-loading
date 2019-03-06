@@ -1,12 +1,12 @@
 import './etools-loading.js';
-import 'lodash/lodash';
-import {dedupingMixin} from '@polymer/polymer/lib/utils/mixin.js';
+import _ from 'lodash-es';
+import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 
 /**
  * @polymer
  * @mixinFunction
  */
-export const LoadingMixin = dedupingMixin(baseClass => class extends baseClass {
+const internalLoadingMixin = baseClass => class extends baseClass {
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('global-loading', this.handleLoading);
@@ -93,4 +93,11 @@ export const LoadingMixin = dedupingMixin(baseClass => class extends baseClass {
     this.globalLoadingElement.messages = [];
     this.globalLoadingElement.active = false;
   }
-});
+};
+
+/**
+ * @polymer
+ * @mixinFunction
+ */
+const LoadingMixin = dedupingMixin(internalLoadingMixin);
+export default LoadingMixin;

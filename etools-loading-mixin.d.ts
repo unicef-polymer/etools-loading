@@ -44,3 +44,14 @@ interface internalLoadingMixin {
   handleLoading(event: any): void;
   clearLoadingQueue(event: any): void;
 }
+
+declare function LoadingMixin<T extends new (...args: any[]) => {}>(base: T): T & LoadingMixinConstructor;
+
+interface LoadingMixinConstructor {
+  new(...args: any[]): LoadingMixin;
+}
+
+export {LoadingMixinConstructor};
+
+interface LoadingMixin {
+}

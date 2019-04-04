@@ -12,46 +12,43 @@
 // tslint:disable:variable-name Describing an API that's defined elsewhere.
 // tslint:disable:no-any describes the API as best we are able today
 
-import {dedupingMixin} from '@polymer/polymer/lib/utils/mixin.js';
+import {PolymerElement} from "@polymer/polymer/polymer-element";
 
-declare function internalLoadingMixin<T extends new (...args: any[]) => {}>(base: T): T & internalLoadingMixinConstructor;
-
-interface internalLoadingMixinConstructor {
-  new(...args: any[]): internalLoadingMixin;
+interface Constructor<T> {
+  new(...args: any[]): T;
 }
 
-export {internalLoadingMixinConstructor};
+declare function internalLoadingMixin<T extends Constructor<PolymerElement>>(base: T): {
+  new (...args: any[]): {
+      connectedCallback(): void;
 
-interface internalLoadingMixin {
-  connectedCallback(): void;
+      /**
+       * This method will create an etools-loading absolute element
+       * (loading element is appended to the body and it will cover entire screen)
+       */
+      createLoading(loadingMessage: any): Element|null;
 
-  /**
-   * This method will create an etools-loading absolute element
-   * (loading element is appended to the body and it will cover entire screen)
-   */
-  createLoading(loadingMessage: any): Element|null;
+      /**
+       * Use this method to remove a loading element in the detached state of the element where loading is used
+       */
+      removeLoading(loadingElement: any): void;
+      addMessageToQue(messages: any, source: any): any;
+      removeMessageFromQue(messages: any, source: any): any;
 
-  /**
-   * Use this method to remove a loading element in the detached state of the element where loading is used
-   */
-  removeLoading(loadingElement: any): void;
-  addMessageToQue(messages: any, source: any): any;
-  removeMessageFromQue(messages: any, source: any): any;
+      /**
+       * Show loading when data is requested from server, or save is in progress...
+       */
+      handleLoading(event: any): void;
+      clearLoadingQueue(event: any): void;
 
-  /**
-   * Show loading when data is requested from server, or save is in progress...
-   */
-  handleLoading(event: any): void;
-  clearLoadingQueue(event: any): void;
+  }
+} & T & Constructor<PolymerElement>;
+
+
+declare function LoadingMixin<T extends Constructor<PolymerElement>>(base: T): {
+  new (...args: any[]): {
+
+  }
 }
 
-declare function LoadingMixin<T extends new (...args: any[]) => {}>(base: T): T & LoadingMixinConstructor;
-
-interface LoadingMixinConstructor {
-  new(...args: any[]): LoadingMixin;
-}
-
-export {LoadingMixinConstructor};
-
-interface LoadingMixin {
-}
+export default LoadingMixin;

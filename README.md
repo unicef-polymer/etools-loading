@@ -11,7 +11,7 @@ You can use this loading element:
     make sure you remove the loading element in your element detached state using `removeLoading(loadingElement)`.
 
 	- By default, the overlay will be displayed over the `body`, but if `LoadingMixin` it's used and element has a property named `loadingContainer`
-	pointing to an HTMLElement then this area will be covered
+	pointing to an HTMLElement then this area will be covered.
 
 - simple, no overlay, inline block: the loading spinner and the message will be displayed inline-block.
 

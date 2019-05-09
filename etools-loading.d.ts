@@ -41,7 +41,7 @@ import {PolymerElement, html} from '@polymer/polymer/polymer-element';
  *
  * To change spinner colors use paper-spinner styling variables([paper-spinner docs](https://elements.polymer-project.org/elements/paper-spinner))
  */
-declare class EtoolsLoading extends HTMLElement {
+declare class EtoolsLoading extends PolymerElement {
   active: boolean|null|undefined;
   loadingText: string|null|undefined;
   _loadingStateChanged(active: any): void;

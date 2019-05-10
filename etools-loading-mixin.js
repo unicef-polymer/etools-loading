@@ -7,7 +7,21 @@ import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
  * @mixinFunction
  */
 const internalLoadingMixin = baseClass => class extends baseClass {
+  
+  
+  static get properties() {
+    return {
+      /**
+      *  If is set, this element will be used as loading container instead of default body
+      */
+      loadingContainer: {
+        type: Object
+      }
+    };
+  }
+  
   connectedCallback() {
+
     super.connectedCallback();
     this.addEventListener('global-loading', this.handleLoading);
     this.addEventListener('clear-loading-messages', this.clearLoadingQueue);
@@ -29,7 +43,8 @@ const internalLoadingMixin = baseClass => class extends baseClass {
       newLoadingElement.loadingText = loadingMessage;
     }
     newLoadingElement.absolute = true;
-    document.querySelector('body').appendChild(newLoadingElement);
+    this.getContainer().appendChild(newLoadingElement);
+
     return newLoadingElement;
   }
 
@@ -39,7 +54,7 @@ const internalLoadingMixin = baseClass => class extends baseClass {
    */
   removeLoading(loadingElement) {
     if (loadingElement) {
-      document.querySelector('body').removeChild(loadingElement);
+        this.getContainer().removeChild(loadingElement)
     }
   }
 
@@ -92,6 +107,14 @@ const internalLoadingMixin = baseClass => class extends baseClass {
     event.stopImmediatePropagation();
     this.globalLoadingElement.messages = [];
     this.globalLoadingElement.active = false;
+  }
+
+  getContainer(){
+    if(this.loadingContainer){
+      return this.loadingContainer;
+    } else {
+      return document.querySelector('body');
+    }
   }
 };
 

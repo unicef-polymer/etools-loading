@@ -29,6 +29,10 @@ declare function LoadingMixin<T extends Constructor<PolymerElement>>(base: T): {
     handleLoading(event: any): void;
     clearLoadingQueue(event: any): void;
 
+    /**
+     *  If is set, this element will be used as loading container instead of default body
+     */
+    loadingContainer: HTMLElement | null;
   }
 } & T & Constructor<PolymerElement>;
 

@@ -10,6 +10,9 @@ You can use this loading element:
     - absolute position: the loading will cover entire screen. Use `LoadingMixin` to create the loading element when your custom element is stamped (`createLoading`);
     make sure you remove the loading element in your element detached state using `removeLoading(loadingElement)`.
 
+	- By default, the overlay will be displayed over the `body`, but if `LoadingMixin` it's used and property `loadingContainer` is set
+	then this will be used as container.
+
 - simple, no overlay, inline block: the loading spinner and the message will be displayed inline-block.
 
 ## Usage

@@ -7,19 +7,19 @@ import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
  * @mixinFunction
  */
 const internalLoadingMixin = baseClass => class extends baseClass {
-  
-  
+
+
   static get properties() {
     return {
       /**
       *  If is set, this element will be used as loading container instead of default body
       */
-      loadingContainer: {
+      etoolsLoadingContainer: {
         type: Object
       }
     };
   }
-  
+
   connectedCallback() {
 
     super.connectedCallback();
@@ -110,8 +110,8 @@ const internalLoadingMixin = baseClass => class extends baseClass {
   }
 
   getContainer(){
-    if(this.loadingContainer){
-      return this.loadingContainer;
+    if(this.etoolsLoadingContainer){
+      return this.etoolsLoadingContainer;
     } else {
       return document.querySelector('body');
     }

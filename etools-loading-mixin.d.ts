@@ -32,7 +32,7 @@ declare function LoadingMixin<T extends Constructor<PolymerElement>>(base: T): {
     /**
      *  If is set, this element will be used as loading container instead of default body
      */
-    loadingContainer: HTMLElement | null;
+    etoolsLoadingContainer: HTMLElement | null;
   }
 } & T & Constructor<PolymerElement>;
 

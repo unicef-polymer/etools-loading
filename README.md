@@ -4,10 +4,12 @@ Loading spinner.
 
 You can use this loading element:
 - with an overlay:
-    - default state has the loading spinner, message and overlay will be shown over your content area;
+    - default state has the loading spinner and message
+
+	- if the control has 'absolute' attribute, the overlay will cover the entire screen, otherwise, the overlay will be shown over your content area,
     make sure your content area has position relative.
 
-    - absolute position: the loading will cover entire screen. Use `LoadingMixin` to create the loading element when your custom element is stamped (`createLoading`);
+    - Use `LoadingMixin` to create the loading element when your custom element is stamped (`createLoading`);
     make sure you remove the loading element in your element detached state using `removeLoading(loadingElement)`.
 
 	- By default, the overlay will be displayed over the `body`, but if `LoadingMixin` it's used and property `etoolsLoadingContainer` is set

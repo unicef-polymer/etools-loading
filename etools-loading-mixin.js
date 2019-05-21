@@ -42,7 +42,7 @@ const internalLoadingMixin = baseClass => class extends baseClass {
     if (typeof loadingMessage === 'string' && loadingMessage !== '') {
       newLoadingElement.loadingText = loadingMessage;
     }
-    newLoadingElement.absolute = true;
+    newLoadingElement.setAttribute('absolute', '');
     this.getContainer().appendChild(newLoadingElement);
 
     return newLoadingElement;

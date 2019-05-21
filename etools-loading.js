@@ -44,7 +44,7 @@ class EtoolsLoading extends PolymerElement {
             @apply --layout-fit;
             background-color: rgba(180, 180, 180, var(--etools-loading-overlay-transparency, 0.6));
             z-index: 50;
-            text-align: center;
+            text-align: center;            
           }
 
           :host([no-overlay]) {

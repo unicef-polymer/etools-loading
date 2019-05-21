@@ -1,8 +1,4 @@
 import './etools-loading.js';
-import remove from 'lodash-es/remove';
-import {default as lodashGet} from 'lodash-es/get';
-import last from 'lodash-es/last';
-import isEmpty from 'lodash-es/isEmpty';
 import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
 
 /**
@@ -69,7 +65,11 @@ const internalLoadingMixin = baseClass => class extends baseClass {
 
   removeMessageFromQue(messages, source) {
     let _messages = messages.slice();
-    remove(_messages, {loadingSource: source.loadingSource});
+    if (_messages) {
+      _messages = _messages.filter(function (msg) {
+        return msg.loadingSource !== source.loadingSource
+      })
+    }
     return _messages;
   }
 
@@ -84,26 +84,44 @@ const internalLoadingMixin = baseClass => class extends baseClass {
 
     let loadingSource = event.detail.loadingSource
         ? event.detail.loadingSource
-        : lodashGet(event, 'path.0.localName', 'na');
+        : this._getValueOrDefault(this._getLocalName(event), 'na');
 
     if (event.detail.active) {
-      let message = lodashGet(event, 'detail.message', 'Loading...');
+      let message = this._getValueOrDefault(event.detail.message, 'Loading...');
+
       this.globalLoadingElement.messages = this.addMessageToQue(this.globalLoadingElement.messages, {
         loadingSource: loadingSource,
         message: message
       });
-      this.globalLoadingElement.loadingText = last(this.globalLoadingElement.messages).message;
+
+      this.globalLoadingElement.loadingText = this._last(this.globalLoadingElement.messages).message;
       this.globalLoadingElement.active = true;
+
     } else {
       this.globalLoadingElement.messages = this.removeMessageFromQue(this.globalLoadingElement.messages, {
         loadingSource: loadingSource
       });
-      if (isEmpty(this.globalLoadingElement.messages)) {
+      if (!this.globalLoadingElement.messages || !this.globalLoadingElement.messages.length) {
         this.globalLoadingElement.active = false;
       } else {
-        this.globalLoadingElement.loadingText = last(this.globalLoadingElement.messages).message;
+        this.globalLoadingElement.loadingText = this._last(this.globalLoadingElement.messages).message;
       }
     }
+  }
+  _last(array) {
+    const length = !array ? 0 : array.length;
+    return length ? array[length - 1] : undefined;
+  }
+
+  _getLocalName(event) {
+    if (event.path && event.path['0']) {
+      return event.path['0'].localName;
+    }
+    return null;
+  }
+
+  _getValueOrDefault(val, defaultVal) {
+    return (val ? val : defaultVal);
   }
 
   clearLoadingQueue(event) {

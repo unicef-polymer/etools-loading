@@ -1,6 +1,6 @@
 {
-  "description": "loading spinner",
-  "name": "etools-loading",
+  "description": "Loading spinner",
+  "name": "@unicef-polymer/etools-loading",
   "version": "4.0.0",
   "devDependencies": {
     "eslint": "^3.19.0",

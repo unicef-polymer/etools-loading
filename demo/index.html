@@ -4,12 +4,13 @@
   <title>etools-loading demo</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script type="module">
+    import "@polymer/iron-demo-helpers/demo-pages-shared-styles"
+    import "@polymer/iron-demo-helpers/demo-snippet"
+    import '../etools-loading-mixin.js';
+  </script>
 
-  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-
-  <link rel="import" href="../etools-loading.html">
+  <script type="module" src="../etools-loading.js"></script>
 
   <style is="custom-style" include="demo-pages-shared-styles">
     .vertical-section-container {
@@ -48,17 +49,6 @@
       <etools-loading active no-overlay></etools-loading>
     </template>
   </demo-snippet>
-
-  <demo-snippet>
-    <template>
-      <div>
-        <p>Some content</p>
-        <p>Other content</p>
-      </div>
-      <etools-loading active absolute></etools-loading>
-    </template>
-  </demo-snippet>
-
 
 </div>
 

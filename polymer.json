@@ -1,11 +1,10 @@
 {
+  "entrypoint": "index.html",
+  "npm": true,
+  "moduleResolution": "node",
   "lint": {
-    "rules": [
-      "polymer-2"
-    ],
-    "filesToIgnore": [
-      "demo/*",
-      "test/*"
-    ]
-  }
+    "rules": ["polymer-3"]
+  },
+  "filesToIgnore": ["test/*"]
 }
+

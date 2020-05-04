@@ -1,16 +1,16 @@
 {
   "description": "Loading spinner",
   "name": "@unicef-polymer/etools-loading",
-  "version": "4.0.0-rc.2",
+  "version": "4.0.2",
   "homepage": "https://github.com/unicef-polymer/etools-loading",
   "repository": {
     "type": "git",
     "url": "https://github.com/unicef-polymer/etools-loading.git"
   },
   "devDependencies": {
-    "eslint": "^3.19.0",
-    "eslint-config-google": "^0.7.0",
-    "eslint-plugin-html": "^2.0.0",
+    "eslint": "^6.6.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-html": "^6.0.2",
     "@polymer/iron-component-page": "^4.0.0",
     "@polymer/iron-demo-helpers": "^3.0.0",
     "@polymer/gen-typescript-declarations": "^1.6.0",
@@ -25,7 +25,7 @@
   "main": "etools-loading.js",
   "license": "https://github.com/unicef-polymer/etools-loading/blob/master/LICENSE.md",
   "dependencies": {
-    "lodash-es": "^4.17.11",
+    "lodash-es": "^4.17.15",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.0",
     "@polymer/iron-test-helpers": "^3.0.0",

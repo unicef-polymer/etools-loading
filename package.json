@@ -32,6 +32,7 @@
   "license": "https://github.com/unicef-polymer/etools-loading/blob/master/LICENSE.md",
   "dependencies": {
     "lodash-es": "^4.17.15",
+    "lit-element": "^2.3.1",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.0",
     "@polymer/iron-test-helpers": "^3.0.0",

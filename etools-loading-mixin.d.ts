@@ -1,12 +1,11 @@
-
-
+import {LitElement} from 'lit-element/lit-element.js';
 import {PolymerElement} from "@polymer/polymer/polymer-element";
 
 interface Constructor<T> {
   new(...args: any[]): T;
 }
 
-declare function LoadingMixin<T extends Constructor<PolymerElement>>(base: T): {
+declare function LoadingMixin<T extends Constructor<PolymerElement | LitElement>>(base: T): {
   new (...args: any[]): {
     connectedCallback(): void;
 
@@ -34,7 +33,7 @@ declare function LoadingMixin<T extends Constructor<PolymerElement>>(base: T): {
      */
     etoolsLoadingContainer: HTMLElement | null;
   }
-} & T & Constructor<PolymerElement>;
+} & T & Constructor<PolymerElement | LitElement>;
 
 
 export default LoadingMixin;

@@ -35,8 +35,8 @@ import '@polymer/paper-spinner/paper-spinner';
  * @demo demo/index.html
  */
 class EtoolsLoading extends PolymerElement {
-    static get template() {
-      return html`
+  static get template() {
+    return html`
         <style include="iron-flex iron-flex-alignment">
           :host {
             @apply --layout-horizontal;
@@ -75,6 +75,8 @@ class EtoolsLoading extends PolymerElement {
             box-shadow: 0px 2px 5px -2px var(--etools-loading-shadow-color, #333333);
             padding: 10px;
             border-radius: 4px;
+            position: absolute;
+            top: calc(50vh - 25px);
             @apply --etools-loading-container;
           }
 
@@ -91,30 +93,30 @@ class EtoolsLoading extends PolymerElement {
           </div>
         </div>
       `;
-    }
-
-    static get properties() {
-      return {
-        active: {
-          type: Boolean,
-          value: false,
-          reflectToAttribute: true,
-          observer: '_loadingStateChanged'
-        },
-        loadingText: {
-          type: String,
-          value: 'Loading data'
-        }
-      };
-    }
-
-    _loadingStateChanged(active) {
-      if (active) {
-        this.style.display = 'flex';
-      } else {
-        this.style.display = 'none';
-      }
-    }
   }
 
-  customElements.define('etools-loading', EtoolsLoading);
+  static get properties() {
+    return {
+      active: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true,
+        observer: '_loadingStateChanged'
+      },
+      loadingText: {
+        type: String,
+        value: 'Loading data'
+      }
+    };
+  }
+
+  _loadingStateChanged(active) {
+    if (active) {
+      this.style.display = 'flex';
+    } else {
+      this.style.display = 'none';
+    }
+  }
+}
+
+customElements.define('etools-loading', EtoolsLoading);

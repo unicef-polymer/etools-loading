@@ -75,7 +75,7 @@ class EtoolsLoading extends PolymerElement {
             box-shadow: 0px 2px 5px -2px var(--etools-loading-shadow-color, #333333);
             padding: 10px;
             border-radius: 4px;
-            position: absolute;
+            position: fixed;
             top: calc(50vh - 25px);
             @apply --etools-loading-container;
           }

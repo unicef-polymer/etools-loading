@@ -3,7 +3,7 @@ import remove from 'lodash-es/remove';
 import {default as lodashGet} from 'lodash-es/get';
 import last from 'lodash-es/last';
 import isEmpty from 'lodash-es/isEmpty';
-import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin.js';
+import {dedupingMixin} from '@polymer/polymer/lib/utils/mixin.js';
 
 /**
  * @polymer
@@ -41,7 +41,7 @@ const internalLoadingMixin = baseClass => class extends baseClass {
    * @returns {Element}
    */
   createLoading(loadingMessage) {
-    let newLoadingElement = document.createElement('etools-loading');
+    const newLoadingElement = document.createElement('etools-loading');
     if (typeof loadingMessage === 'string' && loadingMessage !== '') {
       newLoadingElement.loadingText = loadingMessage;
     }
@@ -57,18 +57,18 @@ const internalLoadingMixin = baseClass => class extends baseClass {
    */
   removeLoading(loadingElement) {
     if (loadingElement) {
-        this.getContainer().removeChild(loadingElement)
+      this.getContainer().removeChild(loadingElement);
     }
   }
 
   addMessageToQue(messages, source) {
-    let _messages = messages.slice();
+    const _messages = messages.slice();
     _messages.push(source);
     return _messages;
   }
 
   removeMessageFromQue(messages, source) {
-    let _messages = messages.slice();
+    const _messages = messages.slice();
     remove(_messages, {loadingSource: source.loadingSource});
     return _messages;
   }
@@ -82,12 +82,12 @@ const internalLoadingMixin = baseClass => class extends baseClass {
       return;
     }
 
-    let loadingSource = event.detail.loadingSource
-        ? event.detail.loadingSource
-        : lodashGet(event, 'path.0.localName', 'na');
+    const loadingSource = event.detail.loadingSource ?
+        event.detail.loadingSource :
+        lodashGet(event, 'path.0.localName', 'na');
 
     if (event.detail.active) {
-      let message = lodashGet(event, 'detail.message', 'Loading...');
+      const message = lodashGet(event, 'detail.message', 'Loading...');
       this.globalLoadingElement.messages = this.addMessageToQue(this.globalLoadingElement.messages, {
         loadingSource: loadingSource,
         message: message
@@ -112,8 +112,8 @@ const internalLoadingMixin = baseClass => class extends baseClass {
     this.globalLoadingElement.active = false;
   }
 
-  getContainer(){
-    if(this.etoolsLoadingContainer){
+  getContainer() {
+    if (this.etoolsLoadingContainer) {
       return this.etoolsLoadingContainer;
     } else {
       return document.querySelector('body');

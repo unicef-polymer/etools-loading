@@ -1,4 +1,4 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element';
+import { LitElement, html } from 'lit-element';
 import '@polymer/paper-spinner/paper-spinner';
 
 /**
@@ -34,8 +34,8 @@ import '@polymer/paper-spinner/paper-spinner';
  * @customElement
  * @demo demo/index.html
  */
-class EtoolsLoading extends PolymerElement {
-  static get template() {
+class EtoolsLoading extends LitElement {
+  render() {
     return html`
       <style>
         :host {
@@ -101,7 +101,7 @@ class EtoolsLoading extends PolymerElement {
       <div class="flex-h-self-center">
         <div class="flex-h-self-center loading-content">
           <paper-spinner active=""></paper-spinner>
-          <span class="loading-message self-center">[[loadingText]]</span>
+          <span class="loading-message self-center">${this.loadingText}</span>
         </div>
       </div>
     `;
@@ -111,15 +111,26 @@ class EtoolsLoading extends PolymerElement {
     return {
       active: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true,
-        observer: '_loadingStateChanged',
+        reflect: true,
       },
       loadingText: {
         type: String,
-        value: 'Loading data',
       },
     };
+  }
+
+  set active(val) {
+    this._active = val;
+    this._loadingStateChanged(val);
+  }
+
+  get active() {
+    return this._active;
+  }
+  constructor() {
+    super();
+    this.active = false;
+    this.loadingText = 'Loading data';
   }
 
   _loadingStateChanged(active) {

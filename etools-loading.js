@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit-element';
+import {LitElement, html} from 'lit-element';
 import '@polymer/paper-spinner/paper-spinner';
 
 /**
@@ -47,12 +47,7 @@ class EtoolsLoading extends LitElement {
           right: 0;
           bottom: 0;
           left: 0;
-          background-color: rgba(
-            180,
-            180,
-            180,
-            var(--etools-loading-overlay-transparency, 0.6)
-          );
+          background-color: rgba(180, 180, 180, var(--etools-loading-overlay-transparency, 0.6));
           z-index: 50;
           text-align: center;
         }
@@ -92,15 +87,17 @@ class EtoolsLoading extends LitElement {
           position: fixed;
           z-index: 1000000;
         }
-        .flex-h-self-center {
+        .flex-h {
           display: flex;
           flex-direction: row;
+        }
+        .self-center {
           align-self: center;
         }
       </style>
-      <div class="flex-h-self-center">
-        <div class="flex-h-self-center loading-content">
-          <paper-spinner active=""></paper-spinner>
+      <div class="flex-h self-center">
+        <div class="flex-h self-center loading-content">
+          <paper-spinner active></paper-spinner>
           <span class="loading-message self-center">${this.loadingText}</span>
         </div>
       </div>
@@ -111,11 +108,11 @@ class EtoolsLoading extends LitElement {
     return {
       active: {
         type: Boolean,
-        reflect: true,
+        reflect: true
       },
       loadingText: {
-        type: String,
-      },
+        type: String
+      }
     };
   }
 
@@ -129,7 +126,7 @@ class EtoolsLoading extends LitElement {
   }
   constructor() {
     super();
-    this.active = false;
+    this._active = false;
     this.loadingText = 'Loading data';
   }
 

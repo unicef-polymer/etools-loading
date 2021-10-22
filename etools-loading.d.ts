@@ -8,11 +8,10 @@
  *   etools-loading.js
  */
 
-
 // tslint:disable:variable-name Describing an API that's defined elsewhere.
 // tslint:disable:no-any describes the API as best we are able today
 
-import {PolymerElement, html} from '@polymer/polymer/polymer-element';
+import {LitElement} from 'lit-element';
 
 /**
  * `etools-loading`
@@ -41,15 +40,14 @@ import {PolymerElement, html} from '@polymer/polymer/polymer-element';
  *
  * To change spinner colors use paper-spinner styling variables([paper-spinner docs](https://elements.polymer-project.org/elements/paper-spinner))
  */
-declare class EtoolsLoading extends PolymerElement {
-  active: boolean|null|undefined;
-  loadingText: string|null|undefined;
+declare class EtoolsLoading extends LitElement {
+  active: boolean | null | undefined;
+  loadingText: string | null | undefined;
   _loadingStateChanged(active: any): void;
 }
 
 declare global {
-
   interface HTMLElementTagNameMap {
-    "etools-loading": EtoolsLoading;
+    'etools-loading': EtoolsLoading;
   }
 }

@@ -1,0 +1,10 @@
+bower_components/
+node_modules/
+.idea/
+npm-debug.log
+/.circleci
+/demo
+/test
+.eslintignore
+.eslintrc.json
+analysis.json

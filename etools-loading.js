@@ -1,5 +1,4 @@
-import {PolymerElement, html} from '@polymer/polymer/polymer-element';
-import '@polymer/iron-flex-layout/iron-flex-layout-classes';
+import { PolymerElement, html } from '@polymer/polymer/polymer-element';
 import '@polymer/paper-spinner/paper-spinner';
 
 /**
@@ -38,60 +37,74 @@ import '@polymer/paper-spinner/paper-spinner';
 class EtoolsLoading extends PolymerElement {
   static get template() {
     return html`
-        <style include="iron-flex iron-flex-alignment">
-          :host {
-            @apply --layout-horizontal;
-            @apply --layout-center-justified;
-            @apply --layout-fit;
-            background-color: rgba(180, 180, 180, var(--etools-loading-overlay-transparency, 0.6));
-            z-index: 50;
-            text-align: center;
-          }
+      <style>
+        :host {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-color: rgba(
+            180,
+            180,
+            180,
+            var(--etools-loading-overlay-transparency, 0.6)
+          );
+          z-index: 50;
+          text-align: center;
+        }
 
-          :host([no-overlay]) {
-            background-color: transparent;
-            display: inline-block !important;
-            position: static;
-            width: auto;
-          }
+        :host([no-overlay]) {
+          background-color: transparent;
+          display: inline-block !important;
+          position: static;
+          width: auto;
+        }
 
-          :host([no-overlay]:not([active])) {
-            display: none !important;
-          }
+        :host([no-overlay]:not([active])) {
+          display: none !important;
+        }
 
-          .loading-message {
-            margin-left: 15px;
-            color: var(--etools-loading-msg-color, #333333);
-            @apply --etools-loading-message
-          }
+        .loading-message {
+          margin-left: 15px;
+          color: var(--etools-loading-msg-color, #333333);
+          @apply --etools-loading-message;
+        }
 
-          paper-spinner {
-            width: var(--etools-loading-spinner-size, 20px);
-            height: var(--etools-loading-spinner-size, 20px);
-          }
+        paper-spinner {
+          width: var(--etools-loading-spinner-size, 20px);
+          height: var(--etools-loading-spinner-size, 20px);
+        }
 
-          :host(:not([no-overlay])) .loading-content {
-            background: var(--etools-loading-bg-color, #ffffff);
-            border: 1px solid var(--etools-loading-border-color, #dedede);
-            box-shadow: 0px 2px 5px -2px var(--etools-loading-shadow-color, #333333);
-            padding: 10px;
-            border-radius: 4px;
-            @apply --etools-loading-container;
-          }
+        :host(:not([no-overlay])) .loading-content {
+          background: var(--etools-loading-bg-color, #ffffff);
+          border: 1px solid var(--etools-loading-border-color, #dedede);
+          box-shadow: 0px 2px 5px -2px var(--etools-loading-shadow-color, #333333);
+          padding: 10px;
+          border-radius: 4px;
+          @apply --etools-loading-container;
+        }
 
-          :host([absolute]) {
-            position: fixed;
-            z-index: 1000000;
-          }
-
-        </style>
-        <div class="layout horizontal self-center">
-          <div class="layout horizontal self-center loading-content">
-            <paper-spinner active=""></paper-spinner>
-            <span class="loading-message self-center">[[loadingText]]</span>
-          </div>
+        :host([absolute]) {
+          position: fixed;
+          z-index: 1000000;
+        }
+        .flex-h-self-center {
+          display: flex;
+          flex-direction: row;
+          align-self: center;
+        }
+      </style>
+      <div class="flex-h-self-center">
+        <div class="flex-h-self-center loading-content">
+          <paper-spinner active=""></paper-spinner>
+          <span class="loading-message self-center">[[loadingText]]</span>
         </div>
-      `;
+      </div>
+    `;
   }
 
   static get properties() {
@@ -100,12 +113,12 @@ class EtoolsLoading extends PolymerElement {
         type: Boolean,
         value: false,
         reflectToAttribute: true,
-        observer: '_loadingStateChanged'
+        observer: '_loadingStateChanged',
       },
       loadingText: {
         type: String,
-        value: 'Loading data'
-      }
+        value: 'Loading data',
+      },
     };
   }
 

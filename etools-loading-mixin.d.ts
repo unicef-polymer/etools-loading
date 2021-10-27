@@ -33,7 +33,7 @@ declare function LoadingMixin<T extends Constructor<PolymerElement | LitElement>
      */
     etoolsLoadingContainer: HTMLElement | null;
   }
-} & T & Constructor<PolymerElement | LitElement>;
+} & T;
 
 
 export default LoadingMixin;

@@ -8,3 +8,4 @@ npm-debug.log
 .eslintignore
 .eslintrc.json
 analysis.json
+.prettierrc

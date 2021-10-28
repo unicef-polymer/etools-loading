@@ -113,7 +113,7 @@ class EtoolsLoading extends PolymerElement {
         type: Boolean,
         value: false,
         reflectToAttribute: true,
-        observer: '_loadingStateChanged',
+        observer: '_loadingStateChanged'
       },
       loadingText: {
         type: String,

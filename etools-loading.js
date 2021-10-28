@@ -1,4 +1,4 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element';
+import {PolymerElement, html} from '@polymer/polymer/polymer-element';
 import '@polymer/paper-spinner/paper-spinner';
 
 /**
@@ -117,8 +117,8 @@ class EtoolsLoading extends PolymerElement {
       },
       loadingText: {
         type: String,
-        value: 'Loading data',
-      },
+        value: 'Loading data'
+      }
     };
   }
 

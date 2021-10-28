@@ -83,8 +83,8 @@ const internalLoadingMixin = baseClass => class extends baseClass {
     }
 
     const loadingSource = event.detail.loadingSource ?
-        event.detail.loadingSource :
-        lodashGet(event, 'path.0.localName', 'na');
+      event.detail.loadingSource :
+      lodashGet(event, 'path.0.localName', 'na');
 
     if (event.detail.active) {
       const message = lodashGet(event, 'detail.message', 'Loading...');

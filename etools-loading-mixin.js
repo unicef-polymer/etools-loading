@@ -84,6 +84,7 @@ const internalLoadingMixin = (baseClass) =>
         ? event.detail.loadingSource
         : lodashGet(event, 'path.0.localName', 'na');
 
+
       if (event.detail.active) {
         const message = lodashGet(event, 'detail.message', 'Loading...');
         this.globalLoadingElement.messages = this.addMessageToQue(this.globalLoadingElement.messages, {

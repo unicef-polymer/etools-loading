@@ -45,6 +45,21 @@ You can use this loading element:
 
 ![Loading inside a container](img/etools-loading-absolute-position.png)
 
+### Styling
+
+You can use defined variables for styling.
+
+| Custom property                         | Description                       | Default   |
+| --------------------------------------- | --------------------------------- | --------- |
+| `--etools-loading-overlay-transparency` | Overlay transparency              | `0.6`     |
+| `--etools-loading-msg-color`            | Loading message color             | `#333333` |
+| `--etools-loading-spinner-size`         | Spinner size (width & height)     | `20px`    |
+| `--etools-loading-bg-color`             | Background color                  | `#ffffff` |
+| `--etools-loading-border-color`         | Border color                      | `#dedede` |
+| `--etools-loading-shadow-color`         | Shadow color                      | `#333333` |
+| `--etools-loading-container`            | Mixin for Loading container style | `{}`      |
+| `--etools-loading-message`              | Mixin for Loading container style | `{}`      |
+
 ## Install
 
 ```bash

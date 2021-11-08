@@ -1,56 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <title>etools-loading demo</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-  <script type="module">
-    import "@polymer/iron-demo-helpers/demo-pages-shared-styles"
-    import "@polymer/iron-demo-helpers/demo-snippet"
-    import '../etools-loading-mixin.js';
-  </script>
+  <head>
+    <title>etools-loading demo</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes" />
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
+      import '@polymer/iron-demo-helpers/demo-snippet';
+      import '../etools-loading-mixin.js';
+    </script>
 
-  <script type="module" src="../etools-loading.js"></script>
+    <script type="module" src="../etools-loading.js"></script>
 
-  <style is="custom-style" include="demo-pages-shared-styles">
-    .vertical-section-container {
-      max-width: 900px;
-      line-height: 1.456;
-    }
-    .content {
-      position: relative;
-      width: 100%;
-      height: 300px;
-    }
-  </style>
-</head>
-<body>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 900px;
+        line-height: 1.456;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic etools-loading Demo</h3>
+      <demo-snippet>
+        <template>
+          <div style="position: relative; width: 100%; height: 300px">
+            <div>
+              <p>Some content</p>
+              <p>Other content</p>
+            </div>
+            <etools-loading active></etools-loading>
+          </div>
+        </template>
+      </demo-snippet>
 
-<div class="vertical-section-container centered">
-  <h3>Basic etools-loading Demo</h3>
-  <demo-snippet>
-    <template>
-      <div class="content">
-        <div>
-          <p>Some content</p>
-          <p>Other content</p>
-        </div>
-        <etools-loading active></etools-loading>
-      </div>
-    </template>
-  </demo-snippet>
-
-  <demo-snippet>
-    <template>
-      <div>
-        <p>Some content</p>
-        <p>Other content</p>
-      </div>
-      <etools-loading active no-overlay></etools-loading>
-    </template>
-  </demo-snippet>
-
-</div>
-
-</body>
+      <demo-snippet>
+        <template>
+          <div>
+            <p>Some content</p>
+            <p>Other content</p>
+          </div>
+          <etools-loading active no-overlay></etools-loading>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
 </html>

@@ -3,50 +3,58 @@
 Loading spinner.
 
 You can use this loading element:
-- with an overlay:
-    - default state has the loading spinner and message
 
-	- if the control has 'absolute' attribute (TODO - there is a contradiction between attribute name-`absolute` and the fact that it sets `position:fixed`), the overlay will cover the entire screen, otherwise, the overlay will be shown over your content area,
+- with an overlay:
+
+  - default state has the loading spinner and message
+
+  - if the control has 'absolute' attribute (TODO - there is a contradiction between attribute name-`absolute` and the fact that it sets `position:fixed`), the overlay will cover the entire screen, otherwise, the overlay will be shown over your content area,
     make sure your content area has position relative.
 
     - Use `LoadingMixin` to create the loading element when your custom element is stamped (`createLoading`);
-    make sure you remove the loading element in your element detached state using `removeLoading(loadingElement)`.
+      make sure you remove the loading element in your element detached state using `removeLoading(loadingElement)`.
 
-	- By default, the overlay will be displayed over the `body`, but if `LoadingMixin` it's used and property `etoolsLoadingContainer` is set
-	then this will be used as container.
+  - By default, the overlay will be displayed over the `body`, but if `LoadingMixin` it's used and property `etoolsLoadingContainer` is set
+    then this will be used as container.
 
 - simple, no overlay, inline block: the loading spinner and the message will be displayed inline-block.
 
 ## Usage
 
 ### Default. The loading it's placed inside a container:
+
 ```html
 <etools-loading active>Loading text here...</etools-loading>
 ```
+
 ![Loading inside a container](img/etools-loading-contained.png)
 
 ### Inline block loading:
+
 ```html
 <etools-loading no-overlay active>Loading text here...</etools-loading>
 ```
+
 ![Loading inside a container](img/etools-loading-inline-block-position.png)
 
 ### Absolute positioning
+
 ```html
 <etools-loading absolute active>Loading text here...</etools-loading>
 ```
+
 ![Loading inside a container](img/etools-loading-absolute-position.png)
 
 ## Install
-TODO: create npm package
+
 ```bash
 $ npm i --save unicef-polymer/etools-loading#branch_name
 ```
 
 ## Preview element locally
+
 Install needed dependencies by running: `$ npm install`.
 Make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `$ polymer serve` to serve your element application locally.
-
 
 Update demo interface: `$ polymer analyze demo/index.html > analysis.json`
 
@@ -60,7 +68,7 @@ $ npm run lint
 ```
 
 ## Running Tests
-TODO: improve and add more tests
+
 ```
 $ polymer test
 ```

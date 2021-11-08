@@ -1,7 +1,7 @@
 import './etools-loading.js';
 import remove from 'lodash-es/remove';
-import {default as lodashGet} from 'lodash-es/get';
 import last from 'lodash-es/last';
+import {default as lodashGet} from 'lodash-es/get';
 import isEmpty from 'lodash-es/isEmpty';
 import {dedupingMixin} from '@polymer/polymer/lib/utils/mixin.js';
 
@@ -43,6 +43,7 @@ const internalLoadingMixin = (baseClass) =>
       if (typeof loadingMessage === 'string' && loadingMessage !== '') {
         newLoadingElement.loadingText = loadingMessage;
       }
+      newLoadingElement.setAttribute('id', 'fromLoadingLixin');
       newLoadingElement.setAttribute('absolute', '');
       this.getContainer().appendChild(newLoadingElement);
 
@@ -91,6 +92,7 @@ const internalLoadingMixin = (baseClass) =>
           message: message
         });
         this.globalLoadingElement.loadingText = last(this.globalLoadingElement.messages).message;
+        this.globalLoadingElement.setAttribute('source', last(this.globalLoadingElement.messages).loadingSource);
         this.globalLoadingElement.active = true;
       } else {
         this.globalLoadingElement.messages = this.removeMessageFromQue(this.globalLoadingElement.messages, {

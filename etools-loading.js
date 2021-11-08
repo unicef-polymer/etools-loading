@@ -59,7 +59,7 @@ class EtoolsLoading extends LitElement {
           width: auto;
         }
 
-        :host([no-overlay]:not([active])) {
+        :host(:not([active])) {
           display: none !important;
         }
 
@@ -119,6 +119,12 @@ class EtoolsLoading extends LitElement {
   set active(val) {
     this._active = val;
     this._loadingStateChanged(val);
+    // reflect: true doesn't work in this case
+    if (val) {
+      this.setAttribute('active', '');
+    } else {
+      this.removeAttribute('active');
+    }
   }
 
   get active() {

@@ -1,11 +1,13 @@
 import {LitElement} from 'lit-element/lit-element.js';
-import {PolymerElement} from "@polymer/polymer/polymer-element";
+import {PolymerElement} from '@polymer/polymer/polymer-element';
 
 interface Constructor<T> {
-  new(...args: any[]): T;
+  new (...args: any[]): T;
 }
 
-declare function LoadingMixin<T extends Constructor<PolymerElement | LitElement>>(base: T): {
+declare function LoadingMixin<T extends Constructor<PolymerElement | LitElement>>(
+  base: T
+): {
   new (...args: any[]): {
     connectedCallback(): void;
 
@@ -13,7 +15,7 @@ declare function LoadingMixin<T extends Constructor<PolymerElement | LitElement>
      * This method will create an etools-loading absolute element
      * (loading element is appended to the body and it will cover entire screen)
      */
-    createLoading(loadingMessage: any): Element|null;
+    createLoading(loadingMessage: any): Element | null;
 
     /**
      * Use this method to remove a loading element in the detached state of the element where loading is used
@@ -32,8 +34,7 @@ declare function LoadingMixin<T extends Constructor<PolymerElement | LitElement>
      *  If is set, this element will be used as loading container instead of default body
      */
     etoolsLoadingContainer: HTMLElement | null;
-  }
+  };
 } & T;
-
 
 export default LoadingMixin;

@@ -1,4 +1,4 @@
-import {PolymerElement, html} from '@polymer/polymer/polymer-element';
+import {LitElement, html} from 'lit-element';
 import '@polymer/paper-spinner/paper-spinner';
 
 /**
@@ -34,8 +34,8 @@ import '@polymer/paper-spinner/paper-spinner';
  * @customElement
  * @demo demo/index.html
  */
-class EtoolsLoading extends PolymerElement {
-  static get template() {
+class EtoolsLoading extends LitElement {
+  render() {
     return html`
       <style>
         :host {
@@ -47,12 +47,7 @@ class EtoolsLoading extends PolymerElement {
           right: 0;
           bottom: 0;
           left: 0;
-          background-color: rgba(
-            180,
-            180,
-            180,
-            var(--etools-loading-overlay-transparency, 0.6)
-          );
+          background-color: rgba(180, 180, 180, var(--etools-loading-overlay-transparency, 0.6));
           z-index: 50;
           text-align: center;
         }
@@ -64,7 +59,7 @@ class EtoolsLoading extends PolymerElement {
           width: auto;
         }
 
-        :host([no-overlay]:not([active])) {
+        :host(:not([active])) {
           display: none !important;
         }
 
@@ -92,16 +87,18 @@ class EtoolsLoading extends PolymerElement {
           position: fixed;
           z-index: 1000000;
         }
-        .flex-h-self-center {
+        .flex-h {
           display: flex;
           flex-direction: row;
+        }
+        .self-center {
           align-self: center;
         }
       </style>
-      <div class="flex-h-self-center">
-        <div class="flex-h-self-center loading-content">
-          <paper-spinner active=""></paper-spinner>
-          <span class="loading-message self-center">[[loadingText]]</span>
+      <div class="flex-h self-center">
+        <div class="flex-h self-center loading-content">
+          <paper-spinner active></paper-spinner>
+          <span class="loading-message self-center">${this.loadingText}</span>
         </div>
       </div>
     `;
@@ -111,15 +108,32 @@ class EtoolsLoading extends PolymerElement {
     return {
       active: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true,
-        observer: '_loadingStateChanged'
+        reflect: true
       },
       loadingText: {
-        type: String,
-        value: 'Loading data'
+        type: String
       }
     };
+  }
+
+  set active(val) {
+    this._active = val;
+    this._loadingStateChanged(val);
+    // reflect: true doesn't work in this case
+    if (val) {
+      this.setAttribute('active', '');
+    } else {
+      this.removeAttribute('active');
+    }
+  }
+
+  get active() {
+    return this._active;
+  }
+  constructor() {
+    super();
+    this._active = false;
+    this.loadingText = 'Loading data';
   }
 
   _loadingStateChanged(active) {

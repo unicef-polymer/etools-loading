@@ -1,5 +1,5 @@
 {
-  "entrypoint": "index.html",
+  "entrypoint": "etools-loading.js",
   "npm": true,
   "moduleResolution": "node",
   "lint": {
@@ -7,4 +7,3 @@
   },
   "filesToIgnore": ["test/*"]
 }
-

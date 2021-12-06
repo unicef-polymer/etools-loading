@@ -56,7 +56,10 @@ workflows:
   version: 2
   release:
     jobs:
-      - lint
+      - lint:
+          filters:
+            tags:
+              only: /.*/
       - publish:
           requires:
             - lint

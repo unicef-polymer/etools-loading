@@ -22,10 +22,9 @@ import '@polymer/paper-spinner/paper-spinner';
  * `--etools-loading-bg-color` | Background color | `#ffffff`
  * `--etools-loading-border-color` | Border color | `#dedede`
  * `--etools-loading-shadow-color` | Shadow color | `#333333`
- * `--etools-loading-container` | Loading container style | `{}`
- * `--etools-loading-message` | Loading container style | `{}`
- *
- *
+ * `etools-loading::part(container)` | CSS Shadow Part applied to loading container | `{}`
+ * `etools-loading::part(message)` | CSS Shadow Part applied to loading message | `{}`
+
  * To change spinner colors use paper-spinner styling variables([paper-spinner docs]
  * (https://elements.polymer-project.org/elements/paper-spinner))
  *
@@ -66,7 +65,6 @@ class EtoolsLoading extends LitElement {
         .loading-message {
           margin-left: 15px;
           color: var(--etools-loading-msg-color, #333333);
-          @apply --etools-loading-message;
         }
 
         paper-spinner {
@@ -80,7 +78,6 @@ class EtoolsLoading extends LitElement {
           box-shadow: 0px 2px 5px -2px var(--etools-loading-shadow-color, #333333);
           padding: 10px;
           border-radius: 4px;
-          @apply --etools-loading-container;
         }
 
         :host([absolute]) {
@@ -96,9 +93,9 @@ class EtoolsLoading extends LitElement {
         }
       </style>
       <div class="flex-h self-center">
-        <div class="flex-h self-center loading-content">
+        <div class="flex-h self-center loading-content" part="container">
           <paper-spinner active></paper-spinner>
-          <span class="loading-message self-center">${this.loadingText}</span>
+          <span class="loading-message self-center" part="message">${this.loadingText}</span>
         </div>
       </div>
     `;

@@ -38,7 +38,7 @@
     "growl": ">=1.10.0",
     "lodash": ">=4.17.21",
     "minimist": ">=0.2.1",
-    "prismjs": "1.25.0",
+    "prismjs": "1.27.0",
     "path-parse": "1.0.7",
     "glob-parent": "5.1.2",
     "wct-browser-legacy": "^1.0.2",

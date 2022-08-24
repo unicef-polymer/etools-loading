@@ -108,7 +108,8 @@ class EtoolsLoading extends LitElement {
         reflect: true
       },
       loadingText: {
-        type: String
+        type: String,
+        attribute: 'loading-text'
       }
     };
   }

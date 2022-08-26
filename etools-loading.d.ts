@@ -34,8 +34,8 @@ import {LitElement} from 'lit-element';
  * `--etools-loading-bg-color` | Background color | `#ffffff`
  * `--etools-loading-border-color` | Border color | `#dedede`
  * `--etools-loading-shadow-color` | Shadow color | `#333333`
- * `--etools-loading-container` | Loading container style | `{}`
- * `--etools-loading-message` | Loading container style | `{}`
+ * `etools-loading::part(container)` | CSS Shadow Part applied to loading container | `{}`
+ * `etools-loading::part(message)` | CSS Shadow Part applied to loading message | `{}`
  *
  *
  * To change spinner colors use paper-spinner styling variables([paper-spinner docs](https://elements.polymer-project.org/elements/paper-spinner))

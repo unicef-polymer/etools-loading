@@ -1,5 +1,6 @@
 import {LitElement, html} from 'lit-element';
 import '@polymer/paper-spinner/paper-spinner';
+import {getTranslation} from './utils/translate.js';
 
 /**
  * `etools-loading`
@@ -128,10 +129,29 @@ class EtoolsLoading extends LitElement {
   get active() {
     return this._active;
   }
+
   constructor() {
     super();
     this._active = false;
-    this.loadingText = 'Loading data';
+
+    if (!this.language) {
+      this.language = window.localStorage.defaultLanguage || 'en';
+    }
+  }
+
+  async connectedCallback() {
+    super.connectedCallback();
+    document.addEventListener('language-changed', this.handleLanguageChange.bind(this));
+    this.loadingText = getTranslation(this.language, 'LOADING');
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    document.removeEventListener('language-changed', this.handleLanguageChange.bind(this));
+  }
+
+  handleLanguageChange(e) {
+    this.language = e.detail.language;
   }
 
   _loadingStateChanged(active) {

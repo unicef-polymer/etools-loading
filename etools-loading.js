@@ -137,12 +137,13 @@ class EtoolsLoading extends LitElement {
     if (!this.language) {
       this.language = window.localStorage.defaultLanguage || 'en';
     }
+
+    this.loadingText = getTranslation(this.language, 'LOADING');
   }
 
   async connectedCallback() {
     super.connectedCallback();
     document.addEventListener('language-changed', this.handleLanguageChange.bind(this));
-    this.loadingText = getTranslation(this.language, 'LOADING');
   }
 
   disconnectedCallback() {

@@ -23,8 +23,8 @@ const internalLoadingMixin = (baseClass) =>
       };
     }
 
-    constructor(...args) {
-      super(args);
+    constructor() {
+      super();
       if (!this.language) {
         this.language = window.localStorage.defaultLanguage || 'en';
       }

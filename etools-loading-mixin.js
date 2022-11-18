@@ -4,6 +4,7 @@ import last from 'lodash-es/last';
 import {default as lodashGet} from 'lodash-es/get';
 import isEmpty from 'lodash-es/isEmpty';
 import {dedupingMixin} from '@polymer/polymer/lib/utils/mixin.js';
+import {getTranslation} from './utils/translate.js';
 
 /**
  * @polymer
@@ -22,14 +23,31 @@ const internalLoadingMixin = (baseClass) =>
       };
     }
 
+    constructor() {
+      super();
+      if (!this.language) {
+        this.language = window.localStorage.defaultLanguage || 'en';
+      }
+    }
+
     connectedCallback() {
       super.connectedCallback();
       this.addEventListener('global-loading', this.handleLoading);
       this.addEventListener('clear-loading-messages', this.clearLoadingQueue);
+      document.addEventListener('language-changed', this.handleLanguageChange.bind(this));
 
       // create loading element, used for global loading
       this.globalLoadingElement = this.createLoading();
       this.globalLoadingElement.messages = [];
+    }
+
+    disconnectedCallback() {
+      super.disconnectedCallback();
+      document.removeEventListener('language-changed', this.handleLanguageChange.bind(this));
+    }
+
+    handleLanguageChange(e) {
+      this.language = e.detail.language;
     }
 
     /**
@@ -86,7 +104,7 @@ const internalLoadingMixin = (baseClass) =>
         : lodashGet(event, 'path.0.localName', 'na');
 
       if (event.detail.active) {
-        const message = lodashGet(event, 'detail.message', 'Loading...');
+        const message = lodashGet(event, 'detail.message', getTranslation(this.language, 'LOADING'));
         this.globalLoadingElement.messages = this.addMessageToQue(this.globalLoadingElement.messages, {
           loadingSource: loadingSource,
           message: message

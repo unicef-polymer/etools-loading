@@ -16,6 +16,9 @@ const translations = {
   },
   ar: {
     LOADING: 'جار التحميل...'
+  },
+  es: {
+    LOADING: 'Cargando'
   }
 };
 

@@ -15,7 +15,10 @@ const translations = {
     LOADING: 'Se încarcă...'
   },
   ar: {
-    LOADING: 'جار التحميل...'
+    LOADING: '...جار التحميل'
+  },
+  es: {
+    LOADING: 'Cargando'
   }
 };
 

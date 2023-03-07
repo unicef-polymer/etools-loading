@@ -64,7 +64,7 @@ class EtoolsLoading extends LitElement {
         }
 
         .loading-message {
-          margin-left: 15px;
+          margin-inline-start: 15px;
           color: var(--etools-loading-msg-color, #333333);
         }
 

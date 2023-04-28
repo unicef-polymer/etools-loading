@@ -26,7 +26,7 @@ const internalLoadingMixin = (baseClass) =>
     constructor() {
       super();
       if (!this.language) {
-        this.language = window.localStorage.defaultLanguage || 'en';
+        this.language = window.EtoolsLanguage || 'en';
       }
     }
 

@@ -1,7 +1,6 @@
 import {LitElement, html} from 'lit-element';
-import '@polymer/paper-spinner/paper-spinner';
 import {getTranslation} from './utils/translate.js';
-
+import '@shoelace-style/shoelace/dist/components/spinner/spinner.js';
 /**
  * `etools-loading`
  *
@@ -26,8 +25,8 @@ import {getTranslation} from './utils/translate.js';
  * `etools-loading::part(container)` | CSS Shadow Part applied to loading container | `{}`
  * `etools-loading::part(message)` | CSS Shadow Part applied to loading message | `{}`
 
- * To change spinner colors use paper-spinner styling variables([paper-spinner docs]
- * (https://elements.polymer-project.org/elements/paper-spinner))
+ * To change spinner colors use sl-spinner styling variables([sl-spinner docs]
+ * (https://shoelace.style/components/spinner))
  *
  * @extends HTMLElement
  * @polymer
@@ -68,9 +67,11 @@ class EtoolsLoading extends LitElement {
           color: var(--etools-loading-msg-color, #333333);
         }
 
-        paper-spinner {
-          width: var(--etools-loading-spinner-size, 20px);
-          height: var(--etools-loading-spinner-size, 20px);
+        sl-spinner {
+          font-size: var(--etools-loading-spinner-size, 20px);
+          --track-width: var(--etools-loading-spinner-track-width, 3px);
+          --indicator-color: var(--etools-loading-spinner-indicator-color, #659CF7);
+          --track-color: var(--etools-loading-spinner-track-color, #DFDFDF);
         }
 
         :host(:not([no-overlay])) .loading-content {
@@ -95,7 +96,7 @@ class EtoolsLoading extends LitElement {
       </style>
       <div class="flex-h self-center">
         <div class="flex-h self-center loading-content" part="container">
-          <paper-spinner active></paper-spinner>
+          <sl-spinner></sl-spinner>
           <span class="loading-message self-center" part="message">${this.loadingText}</span>
         </div>
       </div>

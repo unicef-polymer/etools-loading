@@ -38,7 +38,7 @@ import {LitElement} from 'lit-element';
  * `etools-loading::part(message)` | CSS Shadow Part applied to loading message | `{}`
  *
  *
- * To change spinner colors use paper-spinner styling variables([paper-spinner docs](https://elements.polymer-project.org/elements/paper-spinner))
+ * To change spinner colors use sl-spinner styling variables([shoelace-spinner docs](https://shoelace.style/components/spinner))
  */
 declare class EtoolsLoading extends LitElement {
   active: boolean | null | undefined;

@@ -1,7 +1,7 @@
 {
   "description": "Loading spinner",
   "name": "@unicef-polymer/etools-loading",
-  "version": "6.1.1",
+  "version": "6.2.0-rc1",
   "homepage": "https://github.com/unicef-polymer/etools-loading",
   "repository": {
     "type": "git",
@@ -17,8 +17,8 @@
   "module": "etools-loading.js",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "@polymer/paper-spinner": "^3.0.0",
     "@polymer/polymer": "^3.4.1",
+    "@shoelace-style/shoelace": "^2.4.0",
     "lit-element": "^2.3.1"
   },
   "devDependencies": {

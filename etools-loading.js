@@ -70,8 +70,8 @@ class EtoolsLoading extends LitElement {
         sl-spinner {
           font-size: var(--etools-loading-spinner-size, 20px);
           --track-width: var(--etools-loading-spinner-track-width, 3px);
-          --indicator-color: var(--etools-loading-spinner-indicator-color, #659CF7);
-          --track-color: var(--etools-loading-spinner-track-color, #DFDFDF);
+          --indicator-color: var(--etools-loading-spinner-indicator-color, #659cf7);
+          --track-color: var(--etools-loading-spinner-track-color, #dfdfdf);
         }
 
         :host(:not([no-overlay])) .loading-content {
